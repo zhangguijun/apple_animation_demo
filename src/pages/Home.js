@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/home.less'
 
-export default class Count extends Component {
+export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,13 +21,24 @@ export default class Count extends Component {
         let { text } = this.state
         return (
             <div className="home">
-                <h2>homepage</h2>
-                <h1 className="h-txt"
-                    onClick= {this.handleClick}
-                
-                >{text}</h1>
+                <div className='item' onClick={()=>this.handleRoute('demo1')}>
+                    Demo1
+                </div>
+                <div className='item' onClick={()=>this.handleRoute('demo2')}>
+                    Demo2
+                </div>
+                <div className='item' onClick={()=>this.handleRoute('demo3')}>
+                    Demo3
+                </div>
             </div>
         )
+    }
+
+    handleRoute = (path) => {
+        let { history } = this.props;
+        history.push({
+            pathname: path
+        })
     }
     handleClick = () => {
         this.props.history.push({

@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import Routes from "./router";
+import Routes2 from './router/router2'
+import './assets/reset.css';
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthenticated: false,
+      isAuthenticating: true
+    };
+  }
+  render() {
+    const childProps = {
+      isAuthenticated: this.state.isAuthenticated,
+      userHasAuthenticated: this.userHasAuthenticated
+    };
+    return (
+        // <Routes childProps={childProps} />
+        <Routes2></Routes2>
+    );
+  }
 }
+export default withRouter(App);
 
-export default App;
